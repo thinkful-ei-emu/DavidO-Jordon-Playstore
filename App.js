@@ -11,33 +11,33 @@ app.use(morgan('dev'));
 const playstore = require('./playstore');
 
 app.get('/apps', (req, res) => {
-  const sort = req.query.sort;
-  const genres = req.query.genres;
-  let results = playstore;
-  if (genres) {
-    results = playstore.filter(app => {
-      return app
-        .Genres
-        .toLowerCase()
-        .includes(genres.toLowerCase());
-    });
-  }
-
-  if (sort) {
-    if (!['rating', 'app'].includes(sort)) {
-      res
-        .status(400)
-        .send('Must sort by Rating or App');
-    }
-    if (['rating'].includes(sort)) {
-         console.log('Should sort by rating');
-      results
-        .sort((rating) => {
-          return a[sort] > b[sort] ? 1 : a[sort] < b[sort] ? -1 : 0;
+    const sort = req.query.sort;
+    const genres = req.query.genres;
+    let results = playstore;
+    if (genres) {
+        results = playstore.filter(app => {
+            return app
+                .Genres
+                .toLowerCase()
+                .includes(genres.toLowerCase());
         });
     }
-  }
-  res.json(results);
+
+    if (sort) {
+        if (!['rating', 'app'].includes(sort)) {
+            res
+                .status(400)
+                .send('Must sort by Rating or App');
+        }
+        if (['rating'].includes(sort)) {
+            console.log('Should sort by rating');
+            results
+                .sort((a, b) => {
+                    return a.Rating - b.Rating;
+                });
+        }
+    }
+    res.json(results);
 });
 
 app.listen(8000, () => console.log('Server listening on 8000'));

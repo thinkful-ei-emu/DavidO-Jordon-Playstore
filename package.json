@@ -18,5 +18,13 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "morgan": "^1.9.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thinkful-ei-emu/DavidO-Jordon-Playstore.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thinkful-ei-emu/DavidO-Jordon-Playstore/issues"
+  },
+  "homepage": "https://github.com/thinkful-ei-emu/DavidO-Jordon-Playstore#readme"
 }
