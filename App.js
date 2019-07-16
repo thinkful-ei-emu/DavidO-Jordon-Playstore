@@ -33,7 +33,7 @@ app.get('/apps', (req, res) => {
             console.log('Should sort by rating');
             results
                 .sort((a, b) => {
-                    return a.Rating - b.Rating;
+                    return b.Rating - a.Rating;
                 });
         }
     }
